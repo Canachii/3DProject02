@@ -9,13 +9,15 @@ public class CubeController : MonoBehaviour
 
     private float _x;
     private float _z;
+    private Vector3 _position;
     private Rigidbody _rb;
-    
-private void Start()
+
+    private void Start()
     {
         _rb = GetComponent<Rigidbody>();
+        _position = transform.position;
     }
-    
+
     private void Update()
     {
         _x = Input.GetAxisRaw("Horizontal");
@@ -27,31 +29,38 @@ private void Start()
         _rb.velocity = new Vector3(_x, _rb.velocity.y, _z) * speed;
     }
 
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Respawn") &&
+            GameManager.Instance.ItemCount >= GameManager.Instance.requireCoins)
+        {
+            GameManager.Instance.StageClear();
+        }
+        else if (other.gameObject.CompareTag("Respawn") &&
+                 GameManager.Instance.ItemCount < GameManager.Instance.requireCoins)
+        {
+            _position = other.transform.position;
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Finish") && GameManager.Instance.Items >= GameManager.Instance.requireCoins)
-        {
-            Debug.Log("Stage Clear!");
-            GameManager.Instance.Items = 0;
-            GameManager.Score += 10000;
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
-        }
-        
         if (other.CompareTag("Obstacle"))
         {
-            Debug.Log("Game Over!");
-            GameManager.Instance.Items = 0;
-            GameManager.Deaths++;
-            SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+            GameManager.Instance.GameOver();
+            transform.position = _position + Vector3.up * 0.1f;
+            transform.rotation = Quaternion.identity;
         }
 
         if (other.CompareTag("Item"))
         {
             Debug.Log("Item collected!");
-            GameManager.Instance.Items++;
-            Destroy(other.gameObject);
+            if (GameManager.Instance.itemCollectedSound)
+                GameManager.Instance.audioSource.PlayOneShot(GameManager.Instance.itemCollectedSound);
+            GameManager.Instance.ItemCount++;
+            other.gameObject.SetActive(false);
         }
-    
+
         GameManager.Instance.UpdateUI();
     }
 }

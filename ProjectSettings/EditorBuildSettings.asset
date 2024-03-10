@@ -6,15 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Homework/Stage 1.unity
+    path: Assets/Scenes/Homework/Stage.unity
     guid: 1ab7f45554bb43043a974c7d2b3acff4
   - enabled: 1
-    path: Assets/Scenes/Homework/Stage 2.unity
-    guid: c6afcb4c0e2126845ab23ca01f753fc5
-  - enabled: 1
-    path: Assets/Scenes/Homework/Stage 3.unity
-    guid: 92aebba609ce34f42a906373c79c3d2b
-  - enabled: 1
-    path: Assets/Scenes/Homework/Stage 4.unity
-    guid: 42573c973751448469f6d2c6b119ff35
+    path: Assets/Scenes/Homework/Result.unity
+    guid: 5ca9b5f8ae9cd3f45be1692c1095c1a6
   m_configObjects: {}
