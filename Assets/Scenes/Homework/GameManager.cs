@@ -101,4 +101,9 @@ public class GameManager : MonoBehaviour
         
         scoreText.text = $"HighScore: {PlayerPrefs.GetInt("Score", 0)}\nScore: {Score}";
     }
+    
+    public void SetVolume(float value)
+    {
+        audioSource.volume = value;
+    }
 }
