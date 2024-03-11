@@ -5,12 +5,6 @@ public class Rotate : MonoBehaviour
 {
     public float speed = 1.0f;
     public bool clockwise = true;
-    private Vector3 _pos;
-    
-    private void Start()
-    {
-        _pos = transform.position;
-    }
     
     private void Update()
     {

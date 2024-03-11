@@ -31,13 +31,13 @@ public class CubeController : MonoBehaviour
 
     private void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Respawn") &&
+        if (other.gameObject.CompareTag("Finish") &&
             GameManager.Instance.ItemCount >= GameManager.Instance.requireCoins)
         {
             GameManager.Instance.StageClear();
         }
-        else if (other.gameObject.CompareTag("Respawn") &&
-                 GameManager.Instance.ItemCount < GameManager.Instance.requireCoins)
+        
+        if (other.gameObject.CompareTag("Respawn"))
         {
             _position = other.transform.position;
         }
