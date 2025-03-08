@@ -1,7 +1,7 @@
 # 세가게1 모작
 
 > [!NOTE]
-> 이 게임은 Material, ProBuilder를 이해하기 위한 연습용으로 제작된 게임입니다.  
+> 이 게임은 Material, ProBuilder를 이해하기 위해 연습용으로 제작된 게임입니다.  
 > 원본은 *세상에서 가장 어려운 게임(The World's Hardest Game)* 입니다.
 
 소스코드는 [여기](https://github.com/Canachii/3DProject02/tree/main/Assets/Scenes/Homework)에서 확인하실 수 있습니다.
